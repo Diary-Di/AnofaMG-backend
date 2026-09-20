@@ -1,7 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.entity.Annonce;
-import com.example.backend.repository.AnnonceRepository;
+import com.example.backend.service.AnnonceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,29 +11,28 @@ import java.util.List;
 @RequestMapping("/api/annonces")
 public class AnnonceController {
 
-    private final AnnonceRepository annonceRepository;
+    private final AnnonceService annonceService;
 
-    public AnnonceController(AnnonceRepository annonceRepository) {
-        this.annonceRepository = annonceRepository;
+    public AnnonceController(AnnonceService annonceService) {
+        this.annonceService = annonceService;
     }
 
     // READ - all annonces
     @GetMapping
     public List<Annonce> getAllAnnonces() {
-        return annonceRepository.findAll();
+        return annonceService.getAllAnnonces();
     }
 
     // READ - one annonce
     @GetMapping("/{id}")
     public Annonce getAnnonce(@PathVariable Integer id) {
-        return annonceRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Annonce not found"));
+        return annonceService.getAnnonce(id);
     }
 
     // CREATE
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Annonce createAnnonce(@RequestBody Annonce annonce) {
-        return annonceRepository.save(annonce);
+        return annonceService.createAnnonce(annonce);
     }
 }
