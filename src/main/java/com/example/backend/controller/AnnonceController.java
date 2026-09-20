@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/annonces")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AnnonceController {
 
     private final AnnonceService annonceService;
