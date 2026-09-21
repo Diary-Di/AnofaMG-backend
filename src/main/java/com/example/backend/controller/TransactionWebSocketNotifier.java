@@ -24,18 +24,20 @@ public class TransactionWebSocketNotifier {
     public void notifyAnnonceCreated(AnnonceCreatedEvent event) {
         Annonce annonce = annonceService.getAnnonce(event.annonceId());
         messagingTemplate.convertAndSend(
-                "/topic/annonces",
-                new TransactionResponse(
+                "/topic/transactions",
+                new TransactionNotification(
                         "INSERT",
                         annonce.getNumId(),
                         "Annonce créée avec succès",
-                        annonce));
+                        annonce.getTitre(),
+                        annonce.getEmail()));
     }
 
-    public record TransactionResponse(
+    public record TransactionNotification(
             String operation,
             Integer annonceId,
             String text,
-            Annonce annonce) {
+            String titre,
+            String email) {
     }
 }

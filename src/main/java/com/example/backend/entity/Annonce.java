@@ -31,6 +31,9 @@ public class Annonce {
     @Column(length = 13)
     private String contact;
 
+    @Column(length = 25)
+    private String email;
+
     private Integer prix;
 
     private Integer chambre;
@@ -91,6 +94,14 @@ public class Annonce {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getPrix() {
