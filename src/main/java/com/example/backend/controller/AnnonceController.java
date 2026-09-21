@@ -12,6 +12,8 @@ import java.util.List;
 @CrossOrigin(originPatterns = {
         "http://localhost:5173",
         "http://10.185.162.207:5173",
+        "https://anofa-mg.vercel.app",
+        "https://*.vercel.app",
         "https://*.ts.net",
         "https://*.ngrok-free.dev",
         "https://*.ngrok-free.app",
