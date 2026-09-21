@@ -12,7 +12,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/villes")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(originPatterns = {
+        "http://localhost:5173",
+        "http://10.185.162.207:5173",
+        "https://*.ts.net",
+        "https://*.ngrok-free.dev",
+        "https://*.ngrok-free.app",
+        "https://*.ngrok.app",
+        "https://*.ngrok.io"
+})
 public class VilleController {
 
     private final VilleRepository villeRepository;
