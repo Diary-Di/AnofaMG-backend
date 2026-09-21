@@ -28,6 +28,9 @@ public class Annonce {
     @Column(length = 50)
     private String adresse;
 
+    @Column(length = 13)
+    private String contact;
+
     private Integer prix;
 
     private Integer chambre;
@@ -80,6 +83,14 @@ public class Annonce {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public Integer getPrix() {
